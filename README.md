@@ -37,9 +37,12 @@
 
 ## Overview
 
-![Mobile](https://github.com/Ddlawal/news-feed/blob/main/news-feed.png)
-![Desktop](hhttps://github.com/Ddlawal/news-feed/blob/main/desktop-news-feed.png)
-![Desktop](https://github.com/Ddlawal/news-feed/blob/main/desktop-news-feed2.png)
+![Mobile](https://github.com/Ddlawal/news-feed/blob/main/news-feed.png)  
+
+![Desktop](https://github.com/Ddlawal/news-feed/blob/main/desktop-news-feed.png)  
+
+![Desktop](https://github.com/Ddlawal/news-feed/blob/main/desktop-news-feed2.png)  
+
 
 Introduce your projects by taking a screenshot, video recordings or a gif. Try to tell us about the solution you built by answering the following:
 
