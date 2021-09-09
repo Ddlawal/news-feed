@@ -68,7 +68,7 @@ export const ArticleListItem: FunctionComponent<ArticleListItemI> = ({ article }
 						<img className={trend} src='trending.png' alt='' />
 					</Box>
 				</Grid>
-				<Grid container alignItems='center' justifyContent='flex-end' xs={5} spacing={1}>
+				<Grid container alignItems='center' justifyContent='flex-end' item xs={5} spacing={1}>
 					<Grid item>
 						<FavouriteIcon color={palette.primary.main} liked={liked} like={like} unlike={unlike} />
 					</Grid>

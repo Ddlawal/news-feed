@@ -6,6 +6,9 @@ import { homePageStyles } from './Home.style'
 import { ArticleListItem } from '../../components/articleListitem/ArticleListitem'
 import { ArticlesI } from '../../interfaces/components'
 import { PrimaryButton } from '../../components/primaryButton'
+import { getRandomNumber } from '../../helper'
+
+const searchStrings = ['Health', 'Business', 'Technology', 'Bitcoin', 'Finance', 'Marketing', 'Food', 'Breaking', 'Sport', 'Energy']
 
 export const Home: FunctionComponent = () => {
 	const desktop = useMediaQuery('(min-width: 600px)')
@@ -14,6 +17,9 @@ export const Home: FunctionComponent = () => {
 	const [articles, setArticles] = useState<ArticlesI[]>([])
 	const [loading, setLoading] = useState(true)
 	const [pageSize, setPageSize] = useState<number | null>(5)
+
+	const index = getRandomNumber()
+	const q = searchStrings[index === 10 ? index - 1 : index]
 
 	const viewAll = () => setPageSize(null)
 
@@ -24,8 +30,8 @@ export const Home: FunctionComponent = () => {
 
 	useEffect(() => {
 		const fetchArticles = async () => {
-			const params = pageSize ? { q: 'Food', pageSize } : { q: 'Food' }
-			console.log(pageSize)
+			const params = pageSize ? { q, pageSize } : { q }
+
 			const data = await request.get(params)
 
 			setArticles(data?.articles ? data?.articles : [])
@@ -49,7 +55,7 @@ export const Home: FunctionComponent = () => {
 							<div className={articlesListWrapper}>
 								<Grid className={heading}>Trending News</Grid>
 								{articles?.map((article: ArticlesI, index) => {
-									const randomNumber = Math.floor(Math.random() * 10)
+									const randomNumber = getRandomNumber()
 
 									article.likes = randomNumber * 10 + (randomNumber * 10 + 13) + randomNumber + 2
 

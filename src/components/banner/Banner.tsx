@@ -17,13 +17,13 @@ export const Banner: FunctionComponent<BannerI> = ({ article }) => {
 					<Grid item xs={11}>
 						{article?.source?.name}
 					</Grid>
-					<Grid container xs={1} alignItems='center' justifyContent='flex-end'>
+					<Grid container item xs={1} alignItems='center' justifyContent='flex-end'>
 						<MoreHorizIcon fontSize={desktop ? 'large' : 'small'} />
 					</Grid>
 				</Grid>
 				<Grid className={newsTitle}>{title}...</Grid>
 				<Grid container alignItems='center' justifyContent='space-between'>
-					<Grid container xs={9} justifyContent='flex-start' spacing={2}>
+					<Grid container item xs={9} justifyContent='flex-start' spacing={2}>
 						<Grid item>
 							<Chip size={desktop ? 'medium' : 'small'} classes={{ colorPrimary }} color='primary' label='Finance' />
 						</Grid>
@@ -31,7 +31,7 @@ export const Banner: FunctionComponent<BannerI> = ({ article }) => {
 							<Chip size={desktop ? 'medium' : 'small'} classes={{ colorPrimary }} color='primary' label='Technolgy' />
 						</Grid>
 					</Grid>
-					<Grid container xs={3} alignItems='center' justifyContent='flex-end'>
+					<Grid container item xs={3} alignItems='center' justifyContent='flex-end'>
 						<FavouriteIcon color='white' size={desktop ? 'large' : 'medium'} />
 						<Box fontSize={desktop ? 22 : 16} fontWeight={700} style={{ marginLeft: '.3rem' }}>
 							253
