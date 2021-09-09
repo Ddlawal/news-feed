@@ -1,42 +1,76 @@
 import { FunctionComponent, useEffect, useState } from 'react'
 import request from '../../services/request'
-import { CircularProgress, Grid, List, ListItem, ListItemText } from '@material-ui/core'
-import { FavoriteBorder as FavoriteBorderIcon } from '@material-ui/icons'
-
-interface ArticlesAttr {
-	source: {
-		id: string
-	}
-	author: string
-}
+import { Box, Button, CircularProgress, Grid, useMediaQuery } from '@material-ui/core'
+import { Banner } from '../../components/banner/Banner'
+import { homePageStyles } from './Home.style'
+import { ArticleListItem } from '../../components/articleListitem/ArticleListitem'
+import { ArticlesI } from '../../interfaces/components'
+import { PrimaryButton } from '../../components/primaryButton'
 
 export const Home: FunctionComponent = () => {
-	const [articles, setArticles] = useState<ArticlesAttr[]>([])
+	const desktop = useMediaQuery('(min-width: 600px)')
+	const { scrollableContainer, articlesListWrapper, heading } = homePageStyles({ desktop })
+
+	const [articles, setArticles] = useState<ArticlesI[]>([])
 	const [loading, setLoading] = useState(true)
+	const [pageSize, setPageSize] = useState<number | null>(5)
+
+	const viewAll = () => setPageSize(null)
+
+	const reloadPage = () => {
+		setLoading(true)
+		window.location.reload()
+	}
 
 	useEffect(() => {
 		const fetchArticles = async () => {
-			const data = await request.get({ q: 'tesla', pageSize: 10 })
+			const params = pageSize ? { q: 'Food', pageSize } : { q: 'Food' }
+			console.log(pageSize)
+			const data = await request.get(params)
 
-			setArticles(data.articles)
+			setArticles(data?.articles ? data?.articles : [])
+			console.log(data?.articles)
 			setLoading(false)
 		}
 
 		fetchArticles()
-	}, [])
+	}, [pageSize])
 	return (
-		<Grid>
+		<>
 			{loading ? (
-				<CircularProgress />
+				<Grid style={{ height: '100vh' }} container justifyContent='center' alignItems='center'>
+					<CircularProgress />
+				</Grid>
 			) : (
-				<List dense>
-					{articles?.map((article: ArticlesAttr, i) => (
-						<ListItem key={i}>
-							<FavoriteBorderIcon /> <ListItemText primary={article.author} />
-						</ListItem>
-					))}
-				</List>
+				<Grid className={scrollableContainer}>
+					{articles?.length > 0 ? (
+						<>
+							<Banner article={articles[0]} />
+							<div className={articlesListWrapper}>
+								<Grid className={heading}>Trending News</Grid>
+								{articles?.map((article: ArticlesI, index) => {
+									const randomNumber = Math.floor(Math.random() * 10)
+
+									article.likes = randomNumber * 10 + (randomNumber * 10 + 13) + randomNumber + 2
+
+									return <ArticleListItem key={index} article={article} />
+								})}
+							</div>
+
+							<Grid container justifyContent='center' alignItems='center'>
+								<PrimaryButton onClick={viewAll} btnText='View All' />
+							</Grid>
+						</>
+					) : (
+						<Grid container justifyContent='center' alignItems='center'>
+							<Box fontSize={20}>No news available</Box>
+							<Grid style={{ height: '100vh' }} container justifyContent='center' alignItems='center'>
+								<PrimaryButton onClick={reloadPage} btnText='Refresh' />
+							</Grid>
+						</Grid>
+					)}
+				</Grid>
 			)}
-		</Grid>
+		</>
 	)
 }

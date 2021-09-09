@@ -26,6 +26,5 @@
     "jest.showCoverageOnLoad": true,
     "jest.runAllTestsFirst": false,
     "editor.formatOnSave": true,
-    "files.autoSave": "afterDelay",
     "editor.defaultFormatter": "vscode.typescript-language-features"
 }

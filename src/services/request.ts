@@ -1,7 +1,6 @@
 import axios from 'axios'
-import qs from 'qs'
 
-const baseURL = 'https://newsapi.org/v2/everything'
+const baseURL = 'https://newsapi.org/v2/top-headlines'
 const apiKey = process.env.REACT_APP_API_KEY
 
 const instance = axios.create({
@@ -12,18 +11,19 @@ const instance = axios.create({
 	},
 })
 
-interface GetParamsAttr {
+interface GetParamsI {
 	q: string
-	pageSize: number
+	pageSize?: number
 }
 
 class Request {
-	async get(params: GetParamsAttr) {
+	async get(params: GetParamsI) {
 		try {
 			const response = await instance.get('/', { params })
+
 			return response.data
 		} catch (error: any) {
-			console.log(error.response.data)
+			console.log(error?.response?.data)
 		}
 	}
 }

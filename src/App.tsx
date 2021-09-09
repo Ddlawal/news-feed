@@ -1,17 +1,8 @@
-import React, { FunctionComponent } from 'react'
-import { Route, Switch, RouteComponentProps, withRouter } from 'react-router-dom'
+import { FunctionComponent } from 'react'
 import { Home } from './pages/home/Home'
-import { Article } from './pages/article/Article'
 
-const App: FunctionComponent<RouteComponentProps> = () => {
-	return (
-		<>
-			<Switch>
-				<Route path='/' exact component={Home} />
-				<Route path='/article' component={Article} />
-			</Switch>
-		</>
-	)
+const App: FunctionComponent = () => {
+	return <Home />
 }
 
-export default withRouter(App)
+export default App
