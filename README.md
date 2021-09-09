@@ -8,11 +8,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://lawaldd-news-feed.netlify.app/">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://github.com/Ddlawal/news-feed">
       Solution
     </a>
     <span> | </span>
@@ -49,14 +49,15 @@ Introduce your projects by taking a screenshot, video recordings or a gif. Try t
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 -   [React](https://reactjs.org/)
--   [Vue.js](https://vuejs.org/)
--   [Tailwind](https://tailwindcss.com/)
+-   [Material-UI](https://material-ui.com/)
 
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
 
-What features did you develop?
+- Fetch and display neews feeds
+- Like and unlike feature
+- Provide link to view full news
 
 ## How To Use
 
@@ -66,11 +67,16 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/your-user-name/your-project-name
+$ git clone https://github.com/Ddlawal/news-feed
 
 # Install dependencies
-$ npm install
+$ yarn install
+
+# Add environment variables
+- Create a `.env` file
+- Copy contents of `.env_example` to the created .env file
+- Set the value of 'REACT_APP_API_KEY' to your API key
 
 # Run the app
-$ npm start
+$ yarn start
 ```
