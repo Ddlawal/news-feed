@@ -7,6 +7,7 @@ import { ArticleListItem } from '../../components/articleListitem/ArticleListite
 import { ArticlesI } from '../../interfaces/components'
 import { PrimaryButton } from '../../components/primaryButton'
 import { getRandomNumber } from '../../helper'
+import { newsData } from '../../helper/newsData'
 
 const searchStrings = ['Health', 'Business', 'Technology', 'Bitcoin', 'Finance', 'Marketing', 'Food', 'Breaking', 'Sport', 'Energy']
 
@@ -34,7 +35,7 @@ export const Home: FunctionComponent = () => {
 
 			const data = await request.get(params)
 
-			setArticles(data?.articles ? data?.articles : [])
+			setArticles(data?.articles ? data?.articles : newsData)
 			console.log(data?.articles)
 			setLoading(false)
 		}
